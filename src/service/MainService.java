@@ -90,8 +90,22 @@ public class MainService {
 		int agei = Integer.parseInt("18");
 		System.out.println("Man ir " +  agei + " gadi");
 		
+		System.out.println("Masīva videjā vērtība: " + average(grades));
 		
+		//parbaude
+		int sum = 3 + 5+ 8 + 1+ 7+ 10;
+		double average = sum / 6;
+		System.out.println("Pārbaude manuāli: " + average);
 		//
 	}
+	
+	public static double average(int[] grades) {
+	    int sum = 0;
+	    for (int i = 0; i < grades.length; i++) {
+	        sum += grades[i];
+	    }
+	    return sum / grades.length;
+	}
+
 
 }
