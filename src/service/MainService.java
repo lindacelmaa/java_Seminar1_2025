@@ -1,6 +1,7 @@
 package service;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * @author localuser
@@ -163,6 +164,33 @@ public class MainService {
 		
 		System.out.println("Factorial of " + N + " is (for loop): " + factorialForLoop(N));
 		System.out.println("Factorial of " + N + " is (recursive): " + factorialRecursive(N));
+		
+		// exercise 3 - arrays
+		
+		System.out.println("");
+		System.out.println("--------  Exercise 3  ---------");
+		System.out.println("");
+		
+		double lower = 1.5;
+		double upper = 7.25;
+		int A = 5;
+		
+		System.out.println("Array with random values:");
+		double arrayRandom[] = generateArray(N, lower, upper);
+		for(int i = 0; i < N; i++) {
+			System.out.print(arrayRandom[i] + ", ");
+		}
+		System.out.println("");
+		System.out.println("Arrays mean value: " + getMean(arrayRandom));
+		System.out.println("Arrays min value: " + getMin(arrayRandom));
+		System.out.println("Arrays max value: " + getMax(arrayRandom));
+		System.out.println("Sorted array:");
+		double sortedArray[] = arraySort(arrayRandom);
+		for(int i = 0; i < N; i++) {
+			System.out.print(sortedArray[i] + ", ");
+		}
+		System.out.println("");
+		
 	}
 	
 	public static double average(int[] grades) {
@@ -202,5 +230,60 @@ public class MainService {
 			return 1;
 		}
 		return N * factorialRecursive(N - 1);
+	}
+	
+	public static double[] generateArray(int N, double lower, double upper) {
+		double max = upper;
+		double min = lower;
+		Random rand = new Random();
+		double[] array = new double[N];
+		
+		if (lower > upper) {
+			return new double[0];
+		}
+		
+		for (int i = 0; i < N; i++) {
+			array[i] = rand.nextDouble() * (upper - lower) + lower;
+		}
+		return array;
+	}
+	public static double getMean(double[] array) {
+		double sum = 0;
+		for (int i = 0; i < array.length; i++) {
+			sum = array[i] + sum;
+		}
+		double mean = sum/array.length;
+		return mean;
+	}
+	
+	public static double getMin(double[] array) {
+		double min = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] < min) {
+				min = array[i];
+			}
+		}
+		return min;
+	}
+	public static double getMax(double[] array) {
+		double max = array[0];
+		for (int i=1; i < array.length; i++) {
+			if(array[i] > max) {
+				max = array[i];
+			}
+		}
+		return max;
+	}
+	public static double[] arraySort(double[] array) {
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 0; j< array.length - i - 1; j++) {
+				if(array[j] > array[j +1]) {
+					double temp = array[j];
+					array[j] = array[j + 1];
+					array[j + 1] = temp;
+				}
+			}
+		}
+		return array;
 	}
 }
