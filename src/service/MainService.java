@@ -254,16 +254,24 @@ public class MainService {
 		System.out.println("");
 		System.out.println("Number of tries until the desired combination becaume true: " + roll2Dices());
 	
-		// exercise 5 - bytes to char
+		// exercise 6 - bytes to char
 		System.out.println("");
 		System.out.println("--------  Exercise 6  ---------");
-		System.out.println("--------  Part one  ---------");
 		System.out.println("");
 		
 		byte[] array = {72, 101, 108, 108, 111, 33, 32, 77, 121, 32, 115, 107, 105, 108, 108, 115, 32, 97, 114, 101,
 				32, 103, 114, 101, 97, 116, 32, 97, 108, 114, 101, 97, 100, 121, 33};
 		
 		System.out.println("Byte array to string: " + getTextFromBytes(array));
+		
+		// exercise 7 - Pascal's triangle
+		System.out.println("");
+		System.out.println("--------  Exercise 7  ---------");
+		System.out.println("");
+		
+		int level = 6;
+		System.out.println("Pascal numbers in string: " + pascalsTriangle(level));
+		
 	}
 	
 	public static double average(int[] grades) {
@@ -480,5 +488,30 @@ public class MainService {
 		
 		return fromArray;
 	}
-
+	
+	public static String pascalsTriangle(int level) {
+		int[] row = new int[level + 1];
+		
+		for (int i= 0; i <= level; i++) {
+			
+			int factorialForN = 1;
+			int factorialForR = 1;
+			int factorialForNMinusR= 1;
+			
+			for(int j = 1; j <= level; j++) {
+				factorialForN = factorialForN * j;
+			}
+			
+			for(int j = 1; j <= i; j++) {
+				factorialForR = factorialForR * j;
+			}
+			for(int j = 1; j <= level - i; j++) {
+				factorialForNMinusR = factorialForNMinusR * j;
+			}
+			
+			row[i] = factorialForN / (factorialForR * factorialForNMinusR);
+		}
+		String fromArray = Arrays.toString(row);
+		return fromArray;
+	}
 }
