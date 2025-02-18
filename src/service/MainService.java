@@ -140,6 +140,19 @@ public class MainService {
 		for (int i = 0; i < names.length; i++) {
 			System.out.println(names[i] + ", " + times[i]);
 		}
+		
+		// exercise 1 - calculator
+		
+		System.out.println("");
+		System.out.println("--------  Exercise 1  ---------");
+		System.out.println("");
+		double gravity = -9.81; // Earth's gravity in m/s^2
+		double initialVelocity = 0.0;
+		double fallingTime = 10.0;
+		double initialPosition = 0.0;
+		
+		System.out.println("Pos in "+fallingTime+" sec :"+positionCalc(gravity, initialVelocity, initialPosition, fallingTime));
+		
 	}
 	
 	public static double average(int[] grades) {
@@ -157,6 +170,12 @@ public class MainService {
 		}
 		return false;
 		
+	}
+	
+	public static double positionCalc(double gravity, double initialVelocity, double initialPosition, double fallingTime){
+		double position = 0;
+		position = 0.5 * gravity * (fallingTime * fallingTime) + initialVelocity * fallingTime + initialPosition;
+		return position;
 	}
 	
 
