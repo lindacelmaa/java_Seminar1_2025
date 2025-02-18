@@ -253,6 +253,17 @@ public class MainService {
 		System.out.println("--------  Part three  ---------");
 		System.out.println("");
 		System.out.println("Number of tries until the desired combination becaume true: " + roll2Dices());
+	
+		// exercise 5 - bytes to char
+		System.out.println("");
+		System.out.println("--------  Exercise 6  ---------");
+		System.out.println("--------  Part one  ---------");
+		System.out.println("");
+		
+		byte[] array = {72, 101, 108, 108, 111, 33, 32, 77, 121, 32, 115, 107, 105, 108, 108, 115, 32, 97, 114, 101,
+				32, 103, 114, 101, 97, 116, 32, 97, 108, 114, 101, 97, 100, 121, 33};
+		
+		System.out.println("Byte array to string: " + getTextFromBytes(array));
 	}
 	
 	public static double average(int[] grades) {
@@ -456,6 +467,18 @@ public class MainService {
 		} while (firstDice != secondDice);
 		
 		return loops;
+	}
+	
+	public static String getTextFromBytes(byte[] array) {
+		
+		char[] newArray = new char[array.length];
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = (char) array[i];
+		}
+		
+		String fromArray = Arrays.toString(array);
+		
+		return fromArray;
 	}
 
 }
