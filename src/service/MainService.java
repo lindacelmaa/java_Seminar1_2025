@@ -191,6 +191,24 @@ public class MainService {
 		}
 		System.out.println("");
 		
+		// exercise 4 - 2D arrays
+		
+		System.out.println("");
+		System.out.println("--------  Exercise 3  ---------");
+		System.out.println("");
+		
+		int S = 5;
+		
+		System.out.println("Array with values:");
+		double arrayNew[][] = generateMatrix(S);
+		for(int i = 0; i < S; i++) {
+			for(int j = 0; j< S; j++) {
+				System.out.print(arrayNew[i][j] + ",");
+			}
+		}
+		System.out.println("");
+				
+		System.out.println("Product of 2 row, 2 column: " + getProduct(arrayNew, 2, 2));
 	}
 	
 	public static double average(int[] grades) {
@@ -286,4 +304,26 @@ public class MainService {
 		}
 		return array;
 	}
+	
+	public static double[][] generateMatrix(int N){
+		double[][] array = new double[N][N];
+		Random rand = new Random();
+		
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				array[i][j] = rand.nextDouble() * 100;
+			}
+		}
+		return array;
+	}
+	public static double getProduct(double[][] matrix, int i, int j) {
+		double product = 0;
+		
+		for (int n =0; n< matrix.length; n++) {
+			product += matrix[i][n] * matrix[n][j];
+		}
+		
+		return product;
+	}
+
 }
