@@ -194,7 +194,7 @@ public class MainService {
 		// exercise 4 - 2D arrays
 		
 		System.out.println("");
-		System.out.println("--------  Exercise 3  ---------");
+		System.out.println("--------  Exercise 4  ---------");
 		System.out.println("");
 		
 		int S = 5;
@@ -209,6 +209,50 @@ public class MainService {
 		System.out.println("");
 				
 		System.out.println("Product of 2 row, 2 column: " + getProduct(arrayNew, 2, 2));
+		
+		// exercise 5 - probabilities
+		
+		System.out.println("");
+		System.out.println("--------  Exercise 5  ---------");
+		System.out.println("--------  Part one  ---------");
+		System.out.println("");
+		
+		System.out.println("Heads, tails count and ratio when N= 10: ");
+		double[] coinArray1 = coinFlip(10);
+		for (int i = 0; i < coinArray1.length; i++) {
+			System.out.print(coinArray1[i] + ", ");
+		}
+		System.out.println("");
+		System.out.println("Heads, tails count and ratio when N= 100: ");
+		double[] coinArray2 = coinFlip(100);
+		for (int i = 0; i < coinArray2.length; i++) {
+			System.out.print(coinArray2[i] + ", ");
+		}
+		System.out.println("");
+		System.out.println("Heads, tails count and ratio when N= 1000: ");
+		double[] coinArray3 = coinFlip(1000);
+		for (int i = 0; i < coinArray3.length; i++) {
+			System.out.print(coinArray3[i] + ", ");
+		}
+		System.out.println("");
+		System.out.println("Heads, tails count and ratio when N= 10000: ");
+		double[] coinArray4 = coinFlip(10000);
+		for (int i = 0; i < coinArray4.length; i++) {
+			System.out.print(coinArray4[i] + ", ");
+		}
+		System.out.println("");
+		System.out.println("--------  Part two  ---------");
+		System.out.println("");
+		System.out.println("number of occurences for each case (1 - 6): ");
+		int[] diceArray = rollDice(100);
+		for (int i = 0; i < diceArray.length; i++) {
+			System.out.print(diceArray[i] + ", ");
+		}
+		System.out.println("");
+		System.out.println("");
+		System.out.println("--------  Part three  ---------");
+		System.out.println("");
+		System.out.println("Number of tries until the desired combination becaume true: " + roll2Dices());
 	}
 	
 	public static double average(int[] grades) {
@@ -324,6 +368,94 @@ public class MainService {
 		}
 		
 		return product;
+	}
+	
+	public static double[] coinFlip(int N) {
+
+		Random rand = new Random();
+		
+		int[] coins = new int[N];
+		
+		for (int i = 0; i < N; i++) {
+			coins[i] = rand.nextInt(2);
+		}
+		// tail = 0; heads = 1;
+		int tailCount = 0;
+		int headsCount = 0;
+		for (int i = 0; i < N; i++) {
+			if(coins[i] == 0) {
+				tailCount ++;
+			}if(coins[i] == 1) {
+				headsCount ++;
+			}
+		}
+		 double ratio = 0.0;
+		    if (tailCount != 0) {
+		        ratio = (double) headsCount / tailCount;
+		    }
+		
+		double[] array = {headsCount, tailCount, ratio};
+		
+		
+		return array;
+	}
+	
+	public static int[] rollDice(int N) {
+		Random rand = new Random();
+		
+		int[] rolls = new int[N];
+		
+		for (int i=0; i <N; i++) {
+			rolls[i] = rand.nextInt(6) + 1;
+		}
+		
+		int one = 0;
+		int two = 0;
+		int three = 0;
+		int four = 0;
+		int five = 0;
+		int six = 0;
+		
+		for (int i = 0; i < N; i++) {
+			if(rolls[i] == 1) {
+				one ++;
+			}else if(rolls[i] == 2) {
+				two ++;
+			}
+			else if (rolls[i] == 3) {
+				three ++;
+			}else if(rolls[i] == 4) {
+				four ++;
+			}
+			else if(rolls[i] == 5) {
+				five ++;
+			}else if(rolls[i] == 6) {
+				six ++;
+			}
+		}
+		int[] array = {one, two, three, four, five, six};
+		
+		return array;
+		
+	}
+	
+	public static int roll2Dices() {
+		
+		Random rand = new Random();
+		
+		int firstDice = 0;
+		int secondDice = 0;
+		
+		
+		int loops = 0;
+		do {
+			firstDice = rand.nextInt(6) + 1;
+			secondDice = rand.nextInt(6) + 1;
+			
+			loops ++;
+		} while (firstDice != secondDice);
+		
+		return loops;
 	}
 
 }
