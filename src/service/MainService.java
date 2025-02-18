@@ -153,6 +153,16 @@ public class MainService {
 		
 		System.out.println("Pos in "+fallingTime+" sec :"+positionCalc(gravity, initialVelocity, initialPosition, fallingTime));
 		
+		// exercise 2 - factorial
+		
+		System.out.println("");
+		System.out.println("--------  Exercise 2  ---------");
+		System.out.println("");
+		
+		int N = 5;
+		
+		System.out.println("Factorial of " + N + " is (for loop): " + factorialForLoop(N));
+		System.out.println("Factorial of " + N + " is (recursive): " + factorialRecursive(N));
 	}
 	
 	public static double average(int[] grades) {
@@ -178,5 +188,19 @@ public class MainService {
 		return position;
 	}
 	
-
+	public static int factorialForLoop(int N) {
+		int result = 1;
+		for (int i = 1; i < N + 1; i++) {
+			result = result * i;
+		}
+		
+		return result;
+	}
+	
+	public static int factorialRecursive(int N) {
+		if (N == 0) {
+			return 1;
+		}
+		return N * factorialRecursive(N - 1);
+	}
 }
