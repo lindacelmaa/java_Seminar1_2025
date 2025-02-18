@@ -96,7 +96,34 @@ public class MainService {
 		int sum = 3 + 5+ 8 + 1+ 7+ 10;
 		double average = sum / 6;
 		System.out.println("Pārbaude manuāli: " + average);
+		
+		
+		String name1 = "Jānis";
+		String name2 = "Ventspils Kuldīga";
+		System.out.println(isCorrectFormating(name1));
+		System.out.println(isCorrectFormating(name2));
 		//
+		
+		String courseTitle = "Programmesana Timekli JAVA";
+		String facultyTitle = "ITF";
+		String studyProgram = "Datorzinatnes";
+		String accountNo = "LV03HABA0551002144730";
+		String emaill = "karina.krinkele@venta.lv";
+
+		
+		System.out.println("Kursa nosaukuma garums: " + courseTitle.length());
+		System.out.println(facultyTitle.charAt(0) + " " + facultyTitle.charAt(1)
+		+ " " + facultyTitle.charAt(2));
+		System.out.println("Sakas ar D: " + studyProgram.startsWith("D"));
+		
+		System.out.println("Programma atbilst formatejumam: " 
+		+ studyProgram.matches("[A-Z]{1}[a-z ]{4,30}"));
+	
+		System.out.println("Konta numurs atbilst formatejumam: "
+				+ accountNo.matches("[A-Z]{2}[0-9]{2}[A-Z]{4}[0-9]{13}$"));
+		
+		System.out.println("Epasts atbilst formatejumam: "
+				+ emaill.matches("[A-Z]{1}[a-z]{3,10}([ ][A-Z]{1}[a-z]{3,10})?"));
 	}
 	
 	public static double average(int[] grades) {
@@ -106,6 +133,14 @@ public class MainService {
 	    }
 	    return sum / grades.length;
 	}
-
+	 //Uztaisīt funkciju, kas saņem string un atgriež varda formatejumam, pieņemot, ka var but divi vārdi
+	
+	public static boolean isCorrectFormating(String name) {
+		if(name != null && !name.isEmpty()) {
+			return (name.matches("[A-Z]{1}[a-z]{3,10}([ ][A-Z]{1}[a-z]{3,10})?"));
+		}
+		return false;
+		
+	}
 
 }
